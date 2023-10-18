@@ -9,6 +9,7 @@ package(
 exports_files(
     [
         "EvokDialect.h",
+        "EvokTypes.h",
     ],
 )
 
@@ -16,6 +17,7 @@ td_library(
     name = "td_files",
     srcs = [
         "EvokDialect.td",
+        "EvokTypes.td",
     ],
     # include from the evokir-root to enable fully-qualified include-paths
     includes = ["../../../.."],
@@ -38,14 +40,30 @@ gentbl_cc_library(
             ["-gen-dialect-defs"],
             "EvokDialect.cpp.inc",
         ),
-        (
-            ["-gen-dialect-doc"],
-            "EvokDialect.md",
-        ),
     ],
     tblgen = "@llvm-project//mlir:mlir-tblgen",
     td_file = "EvokDialect.td",
     deps = [
+        ":td_files",
+    ],
+)
+
+gentbl_cc_library(
+    name = "types_inc_gen",
+    tbl_outs = [
+        (
+            ["-gen-typedef-decls"],
+            "EvokTypes.h.inc",
+        ),
+        (
+            ["-gen-typedef-defs"],
+            "EvokTypes.cpp.inc",
+        ),
+    ],
+    tblgen = "@llvm-project//mlir:mlir-tblgen",
+    td_file = "EvokTypes.td",
+    deps = [
+        ":dialect_inc_gen",
         ":td_files",
     ],
 )

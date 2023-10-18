@@ -18,6 +18,8 @@ def Evok_Dialect : Dialect {
   }];
 
   let cppNamespace = "::mlir::evokir::evok";
+
+  let useDefaultTypePrinterParser = 1;
 }
 
 #endif  // EVOKIR_INCLUDE_DIALECT_EVOK_IR_EVOKDIALECT_TD_

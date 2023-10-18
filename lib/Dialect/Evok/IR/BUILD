@@ -11,9 +11,11 @@ cc_library(
     ],
     hdrs = [
         "@evokir//include/Dialect/Evok/IR:EvokDialect.h",
+        "@evokir//include/Dialect/Evok/IR:EvokTypes.h",
     ],
     deps = [
         "@evokir//include/Dialect/Evok/IR:dialect_inc_gen",
+        "@evokir//include/Dialect/Evok/IR:types_inc_gen",
         "@llvm-project//llvm:Support",
         "@llvm-project//mlir:IR",
     ],
